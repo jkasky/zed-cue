@@ -1,10 +1,8 @@
 {
   "name": "CUE",
   "version": "0.0.1",
-  "authors": [
-    "jkasky"
-  ],
-  "description": "Provides CUE syntax highlighting and language support for Zed",
+  "authors": ["jkasky"],
+  "description": "CUE language support for Zed",
   "repository": "https://github.com/jkasky/zed-cue",
   "languages": {
     "cue": "languages/cue"
