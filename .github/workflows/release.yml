@@ -1,0 +1,16 @@
+on:
+  push:
+    tags:
+      - "v*"
+
+jobs:
+  homebrew:
+    name: Release Zed Extension
+    runs-on: ubuntu-latest
+    steps:
+      - uses: huacnlee/zed-extension-action@v1
+        with:
+          extension-name: cue
+          push-to: jkasky/zed-extensions
+        env:
+          COMMITTER_TOKEN: ${{ secrets.ZED_CUE_RELEASE_TOKEN }}
