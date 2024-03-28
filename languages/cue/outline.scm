@@ -29,5 +29,7 @@
   (label
     [
       (identifier)
+      (optional
+        (identifier))
       (string)
     ] @name)) @item
