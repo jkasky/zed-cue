@@ -1,0 +1,11 @@
+id = "cue"
+name = "CUE"
+version = "0.0.1"
+schema_version = 1
+authors = ["Jesse Kasky <jkasky@gmail.com>"]
+description = "CUE language support for Zed"
+repository = "https://github.com/jkasky/zed-cue"
+
+[grammars.cue]
+repository = "https://github.com/eonpatapon/tree-sitter-cue"
+commit = "8a5f273bfa281c66354da562f2307c2d394b6c81"
