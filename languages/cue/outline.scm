@@ -4,20 +4,17 @@
 
 ((attribute) @name) @item
 
-; Single import
-(import_declaration
-  ("import" @context)
-  (import_spec) @name) @item
+; Single imports
+ (import_declaration
+   ("import" @context)
+   (import_spec) @name) @item
 
-; List import
+; List imports
 (import_declaration
-  ("import" @context)
-  (import_spec_list)) @item
-
-; Each import in a list
-(["(" ","]
- .
- (import_spec) @name) @item
+  ("import") @context
+  (import_spec_list
+    "("
+    (import_spec) @name @item))
 
 ; Struct literals
 (((identifier) @name)
