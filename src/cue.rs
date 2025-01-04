@@ -11,7 +11,7 @@ impl CueLanguageServer {
         language_server_id: &zed::LanguageServerId,
         worktree: &zed::Worktree,
     ) -> Result<String> {
-        if let Some(path) = worktree.which("cuepls") {
+        if let Some(path) = worktree.which("cue") {
             return Ok(path);
         }
 
@@ -62,7 +62,7 @@ impl CueLanguageServer {
 
         let version_dir = format!("cue-{}", release.version);
         let binary_path = format!(
-            "{version_dir}/cuepls{extension}",
+            "{version_dir}/cue{extension}",
             extension = match platform {
                 zed::Os::Mac | zed::Os::Linux => "",
                 zed::Os::Windows => ".exe",
@@ -115,7 +115,7 @@ impl zed::Extension for CueLanguageServer {
     ) -> zed::Result<zed::Command> {
         Ok(zed::Command {
             command: self.language_server_path(language_server_id, worktree)?,
-            args: vec!["-vv".to_string(), "serve".to_string()],
+            args: vec!["lsp".to_string(), "-vv".to_string(), "serve".to_string()],
             env: Default::default(),
         })
     }
