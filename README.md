@@ -5,7 +5,7 @@ CUE language support for Zed
 - [cue-lang](https://github.com/cue-lang/cue)
 - [tree-sitter-cue](https://github.com/eonpatapon/tree-sitter-cue)
 
-[![Zed downloads](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fapi.zed.dev%2Fextensions%3Ffilter%3Dcue&query=%24.data%5B0%5D.download_count&label=downloads&color=blue&style=for-the-badge)](https://zed.dev/extensions/cue)
+[![Zed downloads](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fapi.zed.dev%2Fextensions%3Ffilter%3Dcue&query=%24.data%5B0%5D.download_count&label=downloads&color=blue&style=for-the-badge&logo=zedindustries&logoColor=white)](https://zed.dev/extensions/cue)
 
 ## Features
 
