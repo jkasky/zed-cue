@@ -2,6 +2,12 @@ on:
   push:
     tags:
       - "v*"
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "Git tag to release (e.g. v0.0.5)"
+        required: true
+        type: string
 
 jobs:
   homebrew:
@@ -12,5 +18,6 @@ jobs:
         with:
           extension-name: cue
           push-to: jkasky/zed-extensions
+          tag: ${{ inputs.tag }}
         env:
           COMMITTER_TOKEN: ${{ secrets.ZED_CUE_RELEASE_TOKEN }}
