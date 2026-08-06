@@ -115,7 +115,7 @@ impl zed::Extension for CueLanguageServer {
     ) -> zed::Result<zed::Command> {
         Ok(zed::Command {
             command: self.language_server_path(language_server_id, worktree)?,
-            args: vec!["lsp".to_string(), "-vv".to_string(), "serve".to_string()],
+            args: vec!["lsp".to_string(), "serve".to_string()],
             env: Default::default(),
         })
     }
