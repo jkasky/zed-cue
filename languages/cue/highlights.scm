@@ -42,9 +42,14 @@
 
 [
   "if"
+  "else"
+  "otherwise"
+  "fallback"
   "for"
   "in"
   "let"
+  "try"
+  "func"
 ] @keyword
 
 ; Operators
@@ -66,6 +71,8 @@
   "!~"
   "!"
   "="
+  "~"
+  "->"
 ] @operator
 
 ; Fields & Properties
@@ -100,6 +107,9 @@
 
 (identifier) @variable
 
+((identifier) @variable.special
+  (#any-of? @variable.special "self" "__self"))
+
 ; Types
 
 (primitive_type) @type
@@ -133,6 +143,12 @@
   "&"
   "|"
 ] @punctuation.special
+
+(spread_expression "..." @operator)
+
+(list_lit "#" @punctuation.special)
+
+(struct_lit "#" @punctuation.special)
 
 (unary_expression
   ("*"
