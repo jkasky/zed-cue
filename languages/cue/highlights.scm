@@ -115,6 +115,14 @@
 
 (builtin_function) @function
 
+; Parameters
+
+(parameter
+  name: (identifier) @variable.parameter)
+
+(labeled_argument
+  label: (identifier) @variable.parameter)
+
 ; Types
 
 (primitive_type) @type
