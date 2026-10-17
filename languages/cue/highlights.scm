@@ -75,6 +75,14 @@
   "->"
 ] @operator
 
+; Variables, which the more specific patterns below override, since a
+; later pattern takes precedence
+
+(identifier) @variable
+
+((identifier) @variable.special
+  (#any-of? @variable.special "self" "__self"))
+
 ; Fields & Properties
 
 (field
@@ -102,13 +110,6 @@
   (builtin_function) @function)
 
 (builtin_function) @function
-
-; Variables
-
-(identifier) @variable
-
-((identifier) @variable.special
-  (#any-of? @variable.special "self" "__self"))
 
 ; Types
 
