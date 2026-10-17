@@ -13,7 +13,36 @@ jobs:
   homebrew:
     name: Release Zed Extension
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.tag || github.ref }}
+
+      # The pull request to zed-industries/extensions links to this release,
+      # so create it first, with the notes for the version from CHANGELOG.md.
+      - name: Create GitHub release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ inputs.tag || github.ref_name }}
+        run: |
+          awk -v v="${TAG#v}" '
+            /^## \[/ { if (found) exit; if (index($0, "## [" v "]") == 1) { found = 1; next } }
+            /^\[[^]]+\]: / { exit }
+            found { print }
+          ' CHANGELOG.md | sed -e '/./,$!d' > notes.md
+          if ! grep -q . notes.md; then
+            echo "::error::CHANGELOG.md has no section for ${TAG#v}"
+            exit 1
+          fi
+          { echo; grep -E '^\[[^]]+\]: ' CHANGELOG.md; } >> notes.md
+          if gh release view "$TAG" > /dev/null 2>&1; then
+            gh release edit "$TAG" --notes-file notes.md
+          else
+            gh release create "$TAG" --verify-tag --title "$TAG" --notes-file notes.md
+          fi
+
       - uses: huacnlee/zed-extension-action@v2
         with:
           extension-name: cue
