@@ -83,6 +83,10 @@
 ((identifier) @variable.special
   (#any-of? @variable.special "self" "__self"))
 
+((identifier) @function
+  (#any-of? @function
+    "len" "close" "and" "or" "div" "mod" "quo" "rem" "matchN" "matchIf" "error"))
+
 ; Fields & Properties
 
 (field
