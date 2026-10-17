@@ -7,9 +7,9 @@ description = "CUE language support for Zed"
 repository = "https://github.com/jkasky/zed-cue"
 
 [grammars.cue]
-repository = "https://github.com/eonpatapon/tree-sitter-cue"
-commit = "8a5f273bfa281c66354da562f2307c2d394b6c81"
+repository = "https://github.com/cue-lang/tree-sitter-cue"
+rev = "ba4356732fcf8b203f7f98cfb6e70390d5dc1da8"
 
 [language_servers.cuelsp]
 name = "cuelsp"
-language = "CUE"
+languages = ["CUE"]
